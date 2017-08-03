@@ -14,6 +14,7 @@
     "cross-env": "^5.0.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
+    "mdi": "^2.0.46",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.4.2",

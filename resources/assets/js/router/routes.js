@@ -1,15 +1,24 @@
 import App from './../App.vue';
-import Home from './../screens/home.vue';
-import Dashboard from './../screens/dashboard.vue';
+import Main from './../pages/index.vue';
+import Auth from './../pages/auth/auth.vue';
+import Dashboard from './../pages/dahboard/dash.vue';
+
+import dashboadRoutes from './dashboard';
+import authRoutes from './auth';
 
 export default [{
         path: '/',
-        name: 'home',
-        component: Home
+        name: 'index',
+        component: Main
+    },
+    {
+        path: '/auth',
+        component: Auth,
+        children: authRoutes
     },
     {
         path: '/dash',
-        name: 'dash',
-        component: Dashboard
+        component: Dashboard,
+        children: dashboadRoutes
     },
 ]
