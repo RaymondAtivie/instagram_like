@@ -12,6 +12,10 @@ let mix = require('laravel-mix');
  |
  */
 
+//NOTE: make vuetify theme variables work
 mix.js('resources/assets/js/app.js', 'public/js/bundle.js').extract(['vue', 'vuex', 'vue-router', 'vuetify'])
-    .stylus('node_modules/vuetify/src/stylus/main.styl', 'public/css/vendor.css')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+    .stylus('resources/assets/stylus/entry.styl', 'public/css/vendor.css')
+    .sass('node_modules/mdi/scss/materialdesignicons.scss', 'public/css/vendor-icons.css')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+
+.sourceMaps();

@@ -1,0 +1,82 @@
+<template>
+    <v-container fluid class="auth-page">
+         <v-layout column class="contain" align-center fill-height justify-space-around>
+            <div class="r-image-box">
+                <img class="clickable" src="/images/logo.png" />
+            </div>
+
+            <v-flex class="auth-screens">
+                <transition name="r-fade" mode="out-in">
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
+                </transition>
+            </v-flex>
+
+            <div class="r-sub-title-box">
+                <router-link tag="span" :to="{name: 'index'}">
+                    <v-btn primary large flat>
+                            Home
+                    </v-btn>
+                </router-link>
+                <router-link tag="span" :to="{name: 'auth.login'}">
+                    <v-btn secondary large flat>
+                        Login
+                    </v-btn>
+                </router-link>
+                <router-link tag="span" :to="{name: 'auth.register'}">
+                    <v-btn secondary large flat>
+                        Register
+                    </v-btn>
+                </router-link>
+                <router-link tag="span" :to="{name: 'dash.home'}">
+                    <v-btn primary large flat>
+                        Dashboard
+                    </v-btn>
+                </router-link>
+            </div>
+        </v-layout> 
+    </v-container>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="stylus">
+@import'./../../../stylus/colors';
+.auth-page{
+    position: absolute;
+    height: 100%;
+    background-color: $cyan.lighten-5    
+    .r-image-box{
+        img{ 
+            width: 150px;
+        }
+    }
+    .auth-screens{
+        padding-top: 40px;
+    }
+}
+
+.r-fade-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.r-fade-enter-active {
+    transition: all .2s linear;
+}
+
+.r-fade-leave {
+    /* opacity: 0; */
+}
+
+.r-fade-leave-active {
+    transition: all .1s linear;
+    opacity: 0;
+    transform: translateY(20px);
+}
+</style>

@@ -1,10 +1,10 @@
 import App from './../App.vue';
-import Main from './../pages/index.vue';
-import Auth from './../pages/auth/auth.vue';
-import Dashboard from './../pages/dahboard/dash.vue';
+import Main from './../pages/indexPage.vue';
+import Auth from './../pages/auth/authPage.vue';
+import Dashboard from './../pages/dashboard/dashboardPage.vue';
 
-import dashboadRoutes from './dashboard';
-import authRoutes from './auth';
+import dashboadRoutes from './dashboardRoutes';
+import authRoutes from './authRoutes';
 
 export default [{
         path: '/',
@@ -19,6 +19,10 @@ export default [{
     {
         path: '/dash',
         component: Dashboard,
-        children: dashboadRoutes
+        children: dashboadRoutes,
+        beforeEnter: (to, from, next) => {
+            console.warn("Dont forget to add before enter dash logic");
+            next();
+        }
     },
 ]

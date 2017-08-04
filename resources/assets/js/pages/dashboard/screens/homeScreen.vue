@@ -1,8 +1,7 @@
 <template>
     <div>
         <img src="/images/logo.png" alt="Vuetify.js">
-        <h1>Auth</h1>
-        <router-view></router-view>
+        <h1>Home Screen</h1>
     </div>
 </template>
 
@@ -12,7 +11,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 div {
     text-align: center
 }
@@ -20,4 +19,9 @@ div {
 img {
     width: 150px
 }
+
+h1 {
+    color: red;
+}
+
 </style>

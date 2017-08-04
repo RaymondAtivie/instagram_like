@@ -1,7 +1,7 @@
 
 <template>
     <v-app>
-        <v-navigation-drawer v-model="sidebar" persistent floating>
+        <v-navigation-drawer v-model="sideBarOpen" persistent floating class="secondary darken-3">
             <r-sidebar></r-sidebar>
         </v-navigation-drawer>
 
@@ -9,7 +9,9 @@
 
         <main id="main">
             <v-container fluid>
-                <router-view></router-view> 
+                <transition name="fade" mode="out-in">
+                    <router-view></router-view> 
+                </transition>
             </v-container>
         </main>
         <v-footer>
@@ -23,28 +25,53 @@ import rSidebar from './../../layouts/sidebar';
 import rTopnav from './../../layouts/topnav';
 import rFooter from './../../layouts/footer';
 
+import store from './../../store/store';
+
 export default {
     data: () => ({
-        sidebar: true
+        sideBarOpen: true
     }),
     methods: {
         sideBarToggle() {
-            this.sidebar = !this.sidebar;
+            this.sideBarOpen = !this.sideBarOpen;
         }
     },
     components:{
         rSidebar,
         rTopnav,
         rFooter,
+    },
+    beforeRouteEnter(to, from, next) {
+        console.log(store);
+        next();
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
     .fixed-top{
         position: fixed;
     }
     main#main{
         padding-top: 64px;
+    }
+
+    .fade-enter {
+        opacity: 0;
+        transform: translate(-30px);
+    }
+
+    .fade-enter-active {
+        transition: all .2s ease;
+    }
+
+    .fade-leave {
+        /* opacity: 0; */
+    }
+
+    .fade-leave-active {
+        transition: all .2s ease;
+        opacity: 0;
+        transform: translate(30px);
     }
 </style>

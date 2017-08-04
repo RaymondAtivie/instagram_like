@@ -1,6 +1,6 @@
 <template>
-    <v-card class="ma-3">
-        <v-list dense class="pt-0">
+     <v-card class="ma-3"> 
+        <v-list class="py-0">
             <v-list-tile v-for="item in items" :key="item.title" @click="gotoPath(item.path)">
                 <v-list-tile-action>
                     <v-icon>{{ item.icon }}</v-icon>
@@ -10,15 +10,15 @@
                 </v-list-tile-content>
             </v-list-tile>
         </v-list>
-    </v-card>
+     </v-card> 
 </template>
 
 <script>
 export default {
     data: () => ({
         items: [
-            { title: 'Home', icon: 'dashboard', path: 'home' },
-            { title: 'Dashboard', icon: 'question_answer', path: 'dash' }
+            { title: 'Home', icon: 'dashboard', path: 'dash.home' },
+            { title: 'Dashboard', icon: 'question_answer', path: 'dash.dash' }
         ],
     }),
     methods: {
