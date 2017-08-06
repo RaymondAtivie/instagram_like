@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-layout class="mb-3" justify-center>
-            <v-flex xs12 sm8 md5>
+            <v-flex xs12 sm8 md6 lg5>
                 <div class="headline">Posts</div>
             </v-flex>
         </v-layout>
@@ -13,21 +13,27 @@
         </v-layout>
     
         <div class="fab-holder">
-            <v-btn @click.native.stop="openNewPost" dark fab class="primary"v-model="fab" v-tooltip:top="{ html: 'new post' }">
+            <v-btn @click.native.stop="openNewPost" dark fab class="primary" v-tooltip:top="{ html: 'new post' }">
                 <v-icon>add</v-icon>
             </v-btn>
         </div>
+    
+        <v-dialog v-model="newPostModal" width="600px">
+            <r-add-post :clear="clearNewPost" userImage="/images/avatar1.jpg" @canceled="newPostModal = false" @posted="addPost"></r-add-post>
+        </v-dialog>
     
     </div>
 </template>
 
 <script>
 import Posts from '@/components/shared/posts/PostList'
+import AddPost from '@/components/shared/posts/AddPost'
 export default {
     data() {
         return {
             show: false,
             posts: [{
+                id: 1,
                 user: {
                     name: 'Raymond Ativie',
                     title: 'Developer and Vuejs evangelist @ Reftek.co',
@@ -64,6 +70,7 @@ export default {
                 media: null
             },
             {
+                id: 2,                
                 user: {
                     name: 'Kelly Ezeh',
                     title: 'Masters computer science',
@@ -98,11 +105,13 @@ export default {
                     link: '/images/image1.jpg',
                 }
             }],
-            fab: false
+            newPostModal: false,
+            counter: 3
         }
     },
     components: {
-        rPosts: Posts
+        rPosts: Posts,
+        rAddPost: AddPost,
     },
     computed: {
         activeFab() {
@@ -112,12 +121,46 @@ export default {
                 case 'three': return { 'class': 'green', icon: 'keyboard_arrow_up' }
                 default: return {}
             }
+        },
+        clearNewPost(){
+            return this.newPostModal;
         }
     },
-    methods:{
-        openNewPost(){
-            alert(99);
-        }
+    methods: {
+        openNewPost() {
+            this.newPostModal = true;
+        },
+        addPost(p){
+            let newPost = {
+                id: this.counter++,
+                user: {
+                    name: 'Raymond Ativie',
+                    title: 'Developer and Vuejs evangelist @ Reftek.co',
+                    image: '/images/avatar1.jpg'
+                },
+                time: 12434355,
+                isLiked: false,
+                text: p.text,
+                isCommentOpen: false,
+                likes: 0,
+                reposts: 0,
+                comments: [],
+                isReport: p.isReport,
+                media: p.media
+            }
+            setTimeout(() => {
+                this.posts.unshift(newPost);
+                this.newPostModal = false;
+                this.closeAddPost = true;                
+            }, 500);
+            console.log(p.media);
+        },
+        remove: function () {
+            this.posts.splice(this.randomIndex(), 1)
+        },
+        randomIndex: function () {
+            return Math.floor(Math.random() * this.items.length)
+        },
     }
 }
 </script>

@@ -10,10 +10,13 @@
         <main id="main">
             <v-container fluid>
                 <transition name="fade" mode="out-in">
-                    <router-view></router-view>
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
                 </transition>
             </v-container>
         </main>
+        
         <v-footer>
             <r-footer></r-footer>
         </v-footer>

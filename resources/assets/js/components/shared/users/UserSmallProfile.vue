@@ -7,6 +7,7 @@
             <v-list-tile-content>
                 <v-list-tile-title>{{user.name}}</v-list-tile-title>
                 <v-list-tile-sub-title>{{user.title}}</v-list-tile-sub-title>
+                <small class="time">2 minutes ago</small>
             </v-list-tile-content>
         </v-list-tile>
     </v-list>
@@ -22,4 +23,11 @@ export default {
     }
 }
 </script>
+
+
+<style>
+small.time{
+    color: silver
+}
+</style>
 

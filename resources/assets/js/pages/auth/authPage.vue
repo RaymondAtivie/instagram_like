@@ -2,9 +2,9 @@
     <v-app>
         <main>
             <v-container fluid class="auth-page">
-                <v-layout class="contain" justify-center>
+                <v-layout class="contain mt-3" justify-center>
                     <div class="r-image-box">
-                        <img class="clickable" src="/images/logo.png" />
+                        <img class="clickable" src="/images/logo.svg" />
                     </div>
                 </v-layout>
     

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="/images/logo.png" alt="Vuetify.js">
+        <img src="/images/logo.svg" alt="Vuetify.js">
         <h1>Home Screen</h1>
     </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="stylus" scoped>
 div {
     text-align: center
 }

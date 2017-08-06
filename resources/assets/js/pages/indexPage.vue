@@ -4,22 +4,22 @@
             <v-container fluid class="index-page">
                 <v-layout column class="contain" align-center fill-height justify-center>
                     <div class="r-image-box">
-                        <img src="/images/logo.png" />
+                        <img src="/images/logo.svg" />
                     </div>
                     <div class="r-title-box">
-                        <h1 class="primary--text">Vumen</h1>
+                        <h1 class="primary--text">Community Watch</h1>
                     </div>
                     <div class="r-sub-title-box">
-                        <h5 class="primary--text">a complete scafolding app for you laravel/vue project</h5>
+                        <h5 class="primary--text">find and report news and incidents happening around you</h5>
                     </div>
                     <div class="r-sub-title-box">
                         <router-link tag="span" :to="{name: 'auth.login'}">
-                            <v-btn secondary large>
-                                Authentication
+                            <v-btn primary large>
+                                Login
                             </v-btn>
                         </router-link>
                         <router-link tag="span" :to="{name: 'dash.home'}">
-                            <v-btn secondary large outline>
+                            <v-btn primary large outline>
                                 Dashboard
                             </v-btn>
                         </router-link>
@@ -41,7 +41,10 @@ export default {
     .index-page{
         position: absolute;
         height: 100%;
-        background-color: $cyan.lighten-5
+        background-color: $cyan.lighten-4;
+        .r-title-box > h1{
+            font-weight: lighter;
+        }
         .r-image-box{
             img{
                 width: 200px;

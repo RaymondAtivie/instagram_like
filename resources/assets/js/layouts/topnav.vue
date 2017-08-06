@@ -1,7 +1,9 @@
 <template>
     <v-toolbar dark class="primary">
         <v-toolbar-side-icon @click.native.stop="sideBarToggle"></v-toolbar-side-icon>
-        <v-toolbar-title @click="gotoHome" class="clickable">Vumen Dashboard</v-toolbar-title>
+        <v-toolbar-title @click="gotoHome" class="clickable">
+            Community Watch
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn flat @click="toggleFullLoad">

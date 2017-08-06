@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
 
-        <title>Laravel</title>
+        <title>Community Watch</title>
         <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor-icons.css') }}" />
          <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor.css') }}" /> 
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}" />
