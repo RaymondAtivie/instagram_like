@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}" />
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">Loading....</div>
         <script src="{{ mix('js/manifest.js') }}"></script>
         <script src="{{ mix('js/vendor.js') }}"></script>
         <script src="{{ mix('js/bundle.js') }}"></script>

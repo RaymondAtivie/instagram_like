@@ -9,7 +9,7 @@
                     <v-text-field label="E-Mail"></v-text-field>
                 </v-flex>
                  <v-flex xs12>
-                    <v-text-field label="Password" hint="At least 8 characters" min="5" :append-icon="e ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (e = !e)" type="text"></v-text-field>
+                    <v-text-field label="Password" hint="At least 8 characters" min="5" :append-icon="e ? 'visibility' : 'visibility_off'" :type="isPasswordVisible" :append-icon-cb="() => (e = !e)"></v-text-field>
                 </v-flex> 
                 <v-flex xs12>
                     <v-btn primary large>Register</v-btn>
@@ -23,7 +23,12 @@
 export default {
     data() {
         return {
-            e: true
+            e: false
+        }
+    },
+    computed: {
+        isPasswordVisible(){
+            return this.e ? 'text' : 'password';
         }
     }
 
@@ -33,6 +38,6 @@ export default {
 <style lang="stylus">
 .register-screen {
     text-align: center
-    width: 30em
+    // width: 30em
 }
 </style>

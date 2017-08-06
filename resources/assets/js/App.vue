@@ -1,7 +1,7 @@
 <template>
         <v-app>
-        <r-top-loader></r-top-loader>
-        <r-full-loader></r-full-loader>
+            <r-top-loader></r-top-loader>
+            <r-full-loader></r-full-loader>
              <transition name="swipe" mode="out-in"> 
                 <router-view keep-alive></router-view>
              </transition> 
@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import topLoader from './components/utils/topLoader';
-import fullLoader from './components/utils/fullLoader';
+import topLoader from '@/components/utils/topLoader';
+import fullLoader from '@/components/utils/fullLoader';
 export default {
     components: {
         rTopLoader: topLoader,

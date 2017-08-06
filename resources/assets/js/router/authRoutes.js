@@ -1,5 +1,5 @@
-import Login from './../pages/auth/screens/loginScreen.vue';
-import Register from './../pages/auth/screens/registerScreen.vue';
+import Login from '@/pages/auth/screens/loginScreen.vue';
+import Register from '@/pages/auth/screens/registerScreen.vue';
 
 export default [{
         path: '/',

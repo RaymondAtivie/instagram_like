@@ -1,7 +1,7 @@
-import App from './../App.vue';
-import Main from './../pages/indexPage.vue';
-import Auth from './../pages/auth/authPage.vue';
-import Dashboard from './../pages/dashboard/dashboardPage.vue';
+import App from '@/App.vue';
+import Main from '@/pages/indexPage.vue';
+import Auth from '@/pages/auth/authPage.vue';
+import Dashboard from '@/pages/dashboard/dashboardPage.vue';
 
 import dashboadRoutes from './dashboardRoutes';
 import authRoutes from './authRoutes';

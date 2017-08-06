@@ -1,42 +1,52 @@
 <template>
-    <v-container fluid class="auth-page">
-         <v-layout column class="contain" align-center fill-height justify-space-around>
-            <div class="r-image-box">
-                <img class="clickable" src="/images/logo.png" />
-            </div>
-
-            <v-flex class="auth-screens">
-                <transition name="r-fade" mode="out-in">
-                    <keep-alive>
-                        <router-view></router-view>
-                    </keep-alive>
-                </transition>
-            </v-flex>
-
-            <div class="r-sub-title-box">
-                <router-link tag="span" :to="{name: 'index'}">
-                    <v-btn primary large flat>
-                            Home
-                    </v-btn>
-                </router-link>
-                <router-link tag="span" :to="{name: 'auth.login'}">
-                    <v-btn secondary large flat>
-                        Login
-                    </v-btn>
-                </router-link>
-                <router-link tag="span" :to="{name: 'auth.register'}">
-                    <v-btn secondary large flat>
-                        Register
-                    </v-btn>
-                </router-link>
-                <router-link tag="span" :to="{name: 'dash.home'}">
-                    <v-btn primary large flat>
-                        Dashboard
-                    </v-btn>
-                </router-link>
-            </div>
-        </v-layout> 
-    </v-container>
+    <v-app>
+        <main>
+            <v-container fluid class="auth-page">
+                <v-layout class="contain" justify-center>
+                    <div class="r-image-box">
+                        <img class="clickable" src="/images/logo.png" />
+                    </div>
+                </v-layout>
+    
+                <v-layout class="auth-screens" justify-center>
+                    <v-flex xs12 sm8 md4 class="auth-screens">
+                        <transition name="r-fade" mode="out-in">
+                            <keep-alive>
+                                <router-view></router-view>
+                            </keep-alive>
+                        </transition>
+                    </v-flex>
+                </v-layout>
+    
+                <v-layout class="contain mt-5" justify-center>
+                    <div class="r-sub-title-box">
+                        <router-link tag="span" :to="{name: 'index'}">
+                            <v-btn primary large flat>
+                                Home
+                            </v-btn>
+                        </router-link>
+                        <router-link tag="span" :to="{name: 'auth.login'}">
+                            <v-btn secondary large flat>
+                                Login
+                            </v-btn>
+                        </router-link>
+                        <router-link tag="span" :to="{name: 'auth.register'}">
+                            <v-btn secondary large flat>
+                                Register
+                            </v-btn>
+                        </router-link>
+                        <router-link tag="span" :to="{name: 'dash.home'}">
+                            <v-btn primary large flat>
+                                Dashboard
+                            </v-btn>
+                        </router-link>
+                    </div>
+                </v-layout>
+            </v-container>
+        </main>
+    
+        <!-- <v-footer></v-footer> -->
+    </v-app>
 </template>
 
 <script>
@@ -46,10 +56,11 @@ export default {
 </script>
 
 <style lang="stylus">
-@import'./../../../stylus/colors';
+@import '~styles/stylus/colors';
 .auth-page{
-    position: absolute;
+    // position: absolute;
     height: 100%;
+    min-height 100vh;
     background-color: $cyan.lighten-5    
     .r-image-box{
         img{ 
@@ -59,6 +70,9 @@ export default {
     .auth-screens{
         padding-top: 40px;
     }
+}
+.auth-screens{
+    min-height 480px;
 }
 
 .r-fade-enter {

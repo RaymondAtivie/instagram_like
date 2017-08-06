@@ -1,28 +1,12 @@
 body {
     font-family: 'Lato', 'Open Sans', 'Roboto', sans-serif;
-    background-color: black;
+    // background-color: silver;
 }
 
 .clickable {
     cursor: pointer;
 }
 
-///TRANSITIONS
-// .r-fade-enter {
-//     opacity: 0;
-//     transform: translate(-30px);
-// }
-// .r-fade-enter-active {
-//     transition: all .2s ease;
-// }
-// .r-fade-leave {
-//     /* opacity: 0; */
-// }
-// .r-fade-leave-active {
-//     transition: all .2s ease;
-//     opacity: 0;
-//     transform: translate(30px);
-// }
 .rotate {
     animation: rotateMe 1s infinite linear;
 }
@@ -47,5 +31,13 @@ body {
     }
     to {
         transform: rotateZ(360deg);
+    }
+}
+
+.removeListHover {
+    a.list__tile:hover,
+    .list__tile--highlighted {
+        background: none !important;
+        cursor: pointer;
     }
 }

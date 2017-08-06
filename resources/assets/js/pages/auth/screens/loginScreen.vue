@@ -24,8 +24,8 @@ export default {
 
 <style lang="stylus">
 .login-screen {
-    text-align: center
-    width: 30em;
+    text-align: center;
+    // width: 300px;
 }
 
 </style>

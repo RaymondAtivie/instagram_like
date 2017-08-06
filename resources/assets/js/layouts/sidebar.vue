@@ -17,8 +17,8 @@
 export default {
     data: () => ({
         items: [
-            { title: 'Home', icon: 'dashboard', path: 'dash.home' },
-            { title: 'Dashboard', icon: 'question_answer', path: 'dash.dash' }
+            { title: 'Home', icon: 'home', path: 'dash.home' },
+            { title: 'Posts', icon: 'dashboard', path: 'dash.dash' }
         ],
     }),
     methods: {

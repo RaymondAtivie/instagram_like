@@ -1,92 +1,149 @@
 <template>
     <div>
-        <div class="title">Posts</div>
-        <br />
-        <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-                <v-card class="post-card">
-                    <v-card-media src="/images/image1.jpg" height="400px"></v-card-media>
-                    <v-card-title primary-title>
-                        <div>
-                            <span>
-                                loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum nisi soluta eos. Dolorum quo molestias voluptatem sapiente voluptatum. Quisquam expedita est doloremque ea neque. Voluptatem vero accusamus accusamus.
-                            </span>
-                        </div>
-                    </v-card-title>
-                    <v-card-actions class="secondary">
-                        <v-btn icon>
-                            <v-icon>favorite</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>bookmark</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>share</v-icon>
-                        </v-btn>
-                        <v-spacer></v-spacer>
-                        <v-btn flat>
-                            <v-icon>comment</v-icon>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            Comments
-                        </v-btn>
-                        <v-btn icon @click.native="show = !show">
-                            <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                    
-                </v-card>
-                    <transition name="slide">
-                        <v-card v-show="show">
-                            <v-card-text>
-                                I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                            </v-card-text>
-                        </v-card>
-                    </transition>
+        <v-layout class="mb-3" justify-center>
+            <v-flex xs12 sm8 md5>
+                <div class="headline">Posts</div>
             </v-flex>
         </v-layout>
+    
+        <v-layout wrap justify-center>
+            <v-flex xs12 sm8 md6 lg5>
+                <r-posts :posts="posts"></r-posts>
+            </v-flex>
+        </v-layout>
+    
+        <div class="fab-holder">
+            <v-btn @click.native.stop="openNewPost" dark fab class="primary"v-model="fab" v-tooltip:top="{ html: 'new post' }">
+                <v-icon>add</v-icon>
+            </v-btn>
+        </div>
+    
     </div>
 </template>
 
 <script>
+import Posts from '@/components/shared/posts/PostList'
 export default {
-    data(){
-        return{
-            show: false
+    data() {
+        return {
+            show: false,
+            posts: [{
+                user: {
+                    name: 'Raymond Ativie',
+                    title: 'Developer and Vuejs evangelist @ Reftek.co',
+                    image: '/images/avatar.jpg'
+                },
+                time: 12434355,
+                isLiked: false,
+                text: "loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum nisi soluta eos. Dolorum quo molestias voluptatem sapiente voluptatum. Quisquam expedita est doloremque ea neque. Voluptatem vero accusamus accusamus.",
+                isCommentOpen: false,
+                likes: 0,
+                reposts: 3,
+                comments: [{
+                    user: {
+                        name: 'Kelly Ezeh',
+                        title: 'Developer and Vuejs evangelist @ Reftek.co',
+                        image: '/images/avatar1.jpg'
+                    },
+                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
+                    date: '12 March 2017'
+                },
+                {
+                    user: {
+                        name: 'Raymond Ativie',
+                        title: 'Developer and Vuejs evangelist @ Reftek.co',
+                        image: '/images/avatar.jpg'
+                    },
+                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
+                    date: '12 March 2017'
+                }],
+                // media: {
+                //     type: 'image',
+                //     link: '/images/image1.jpg',
+                // }
+                media: null
+            },
+            {
+                user: {
+                    name: 'Kelly Ezeh',
+                    title: 'Masters computer science',
+                    image: '/images/avatar1.jpg'
+                },
+                time: 12434355,
+                isLiked: false,
+                text: "loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum nisi soluta eos. Dolorum quo molestias voluptatem sapiente voluptatum. Quisquam expedita est doloremque ea neque. Voluptatem vero accusamus accusamus.",
+                isCommentOpen: false,
+                likes: 0,
+                reposts: 3,
+                comments: [{
+                    user: {
+                        name: 'Raymond Ativie',
+                        title: 'Developer and Vuejs evangelist @ Reftek.co',
+                        image: '/images/avatar.jpg'
+                    },
+                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
+                    date: '12 March 2017'
+                },
+                {
+                    user: {
+                        name: 'Kelly Ezeh',
+                        title: 'Developer and Vuejs evangelist @ Reftek.co',
+                        image: '/images/avatar1.jpg'
+                    },
+                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
+                    date: '12 March 2017'
+                }],
+                media: {
+                    type: 'image',
+                    link: '/images/image1.jpg',
+                }
+            }],
+            fab: false
+        }
+    },
+    components: {
+        rPosts: Posts
+    },
+    computed: {
+        activeFab() {
+            switch (this.tabs) {
+                case 'one': return { 'class': 'purple', icon: 'account_circle' }
+                case 'two': return { 'class': 'red', icon: 'edit' }
+                case 'three': return { 'class': 'green', icon: 'keyboard_arrow_up' }
+                default: return {}
+            }
+        }
+    },
+    methods:{
+        openNewPost(){
+            alert(99);
         }
     }
-
 }
 </script>
 
 <style lang='stylus'>
-.slide-enter {
-    // opacity: 0;
-    // transform: translateY(-20px);
-    height: 0px;
-    background-color: #eac123;
-    // border: 1px solid red;
+.fab-holder{
+    position: fixed;
+    z-index: 20;
+    bottom: 30px;
+    right: 30px;
+    @media only screen and (min-width: 1025px){
+        right: 150px;
+    }
 }
-
-.slide-enter-active {
-    border: 1px solid blue;
-    // height: auto;    
-    transition: all 5s linear;
-    background-color: #da2123;
-}
-
-.slide-leave {
-    height: 0px;    
-}
-
-.slide-leave-active {
+.comment-box{
+    max-height: 500px;
     overflow: hidden;
-    height: 0px;
-    // animation: scaleDown .2s forwards;
-    // transform: translateY(20px);
-    transition height 3s ease;    
 }
+	
+.fade-enter-active 
+	transition max-height .2s ease-in
 
-// .post-card{
-//     transition: all 3s;
-// }
+.fade-leave-active
+	transition max-height .2s ease-out
+
+.fade-enter, .fade-leave-active
+	max-height 0px
+
 </style>

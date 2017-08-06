@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import auth from './modules/authStore';
+import auth from '@/store/modules/authStore';
 
 Vue.use(Vuex);
 console.warn("Use constants for store actions");

@@ -4,13 +4,13 @@
         <v-navigation-drawer v-model="sideBarOpen" persistent floating class="secondary darken-3">
             <r-sidebar></r-sidebar>
         </v-navigation-drawer>
-
+    
         <r-topnav class="fixed-top" @toggleSidebar="sideBarToggle"></r-topnav>
-
+    
         <main id="main">
             <v-container fluid>
                 <transition name="fade" mode="out-in">
-                    <router-view></router-view> 
+                    <router-view></router-view>
                 </transition>
             </v-container>
         </main>
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import rSidebar from './../../layouts/sidebar';
-import rTopnav from './../../layouts/topnav';
-import rFooter from './../../layouts/footer';
+import rSidebar from '@/layouts/sidebar';
+import rTopnav from '@/layouts/topnav';
+import rFooter from '@/layouts/footer';
 
-import store from './../../store/store';
+import store from '@/store/store';
 
 export default {
     data: () => ({
@@ -36,7 +36,7 @@ export default {
             this.sideBarOpen = !this.sideBarOpen;
         }
     },
-    components:{
+    components: {
         rSidebar,
         rTopnav,
         rFooter,
