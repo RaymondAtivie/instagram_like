@@ -1,5 +1,5 @@
 const state = {
-    user: {},
+    posts: {},
     isLoggedIn: true,
 }
 
@@ -23,7 +23,7 @@ const actions = {
     },
     logout: ({ commit }) => {
         commit('logOut');
-    }
+    },
 }
 
 const getters = {

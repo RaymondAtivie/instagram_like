@@ -1,5 +1,5 @@
 import Home from '@/pages/dashboard/screens/homeScreen.vue';
-import Dashboard from '@/pages/dashboard/screens/dashboardScreen.vue';
+import Posts from '@/pages/dashboard/screens/postsScreen.vue';
 
 export default [{
         path: '',
@@ -7,8 +7,8 @@ export default [{
         component: Home
     },
     {
-        path: 'dash',
-        name: 'dash.dash',
-        component: Dashboard
+        path: 'posts',
+        name: 'dash.posts',
+        component: Posts
     },
 ]

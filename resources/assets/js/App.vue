@@ -1,20 +1,25 @@
 <template>
-        <v-app>
-            <r-top-loader></r-top-loader>
-            <r-full-loader></r-full-loader>
-             <transition name="swipe" mode="out-in"> 
-                <router-view keep-alive></router-view>
-             </transition> 
-        </v-app>
+    <v-app>
+        <r-top-loader></r-top-loader>
+        <r-full-loader></r-full-loader>
+        <r-messages></r-messages>
+    
+        <transition name="swipe" mode="out-in">
+            <router-view keep-alive></router-view>
+        </transition>
+    </v-app>
 </template>
 
 <script>
 import topLoader from '@/components/utils/topLoader';
 import fullLoader from '@/components/utils/fullLoader';
+import messages from '@/components/utils/messages';
+
 export default {
     components: {
         rTopLoader: topLoader,
         rFullLoader: fullLoader,
+        rMessages: messages,
     }
 }
 </script>
