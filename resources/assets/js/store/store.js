@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+
 import auth from '@/store/modules/auth/authStore';
 import snackbar from '@/store/modules/snackbar/snackbarStore';
 
+import types from './types';
+
 Vue.use(Vuex);
-console.warn("Use constants for store actions");
 
 export default new Vuex.Store({
     modules: {
@@ -22,23 +24,23 @@ export default new Vuex.Store({
         isFullLoading: false,
     },
     mutations: {
-        startSiteLoading: (state, payload) => {
+        [types.START_LOADING]: (state, payload) => {
             if (payload == 'full') {
                 state.isFullLoading = true;
             } else {
                 state.isLoading = true;
             }
         },
-        stopSiteLoading: (state) => {
+        [types.STOP_LOADING]: (state) => {
             state.isLoading = false;
             state.isFullLoading = false;
         }
     },
     getters: {
-        isLoading: state => {
+        [types.IS_LOADING]: state => {
             return state.isLoading;
         },
-        isFullLoading: state => {
+        [types.IS_FULL_LOADING]: state => {
             return state.isFullLoading;
         }
     }

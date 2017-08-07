@@ -10,6 +10,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
+import storeTypes from './../../store/types';
 
 export default {
     data() {
@@ -19,14 +20,14 @@ export default {
         }
     },
     computed: {
-        ...mapGetters([
-            'isFullLoading'
-        ])
+        ...mapGetters({
+            'isFullLoading' : storeTypes.IS_FULL_LOADING
+        })
     },
     methods: {
-        ...mapMutations([
-            'stopSiteLoading'
-        ])
+        ...mapMutations({
+            'stopSiteLoading' : storeTypes.STOP_LOADING
+        })
     }
 }
 </script>

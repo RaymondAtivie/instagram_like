@@ -2,7 +2,7 @@
     <v-app>
         <r-top-loader></r-top-loader>
         <r-full-loader></r-full-loader>
-        <r-messages></r-messages>
+        <r-snackbar></r-snackbar>
     
         <transition name="swipe" mode="out-in">
             <router-view keep-alive></router-view>
@@ -13,13 +13,13 @@
 <script>
 import topLoader from '@/components/utils/topLoader';
 import fullLoader from '@/components/utils/fullLoader';
-import messages from '@/components/utils/messages';
+import snackbar from '@/components/utils/snackbar';
 
 export default {
     components: {
         rTopLoader: topLoader,
         rFullLoader: fullLoader,
-        rMessages: messages,
+        rSnackbar: snackbar,
     }
 }
 </script>

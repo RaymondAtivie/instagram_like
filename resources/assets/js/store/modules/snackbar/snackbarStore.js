@@ -20,7 +20,7 @@ const state = {
 const mutations = {
     [types.LOAD_SNACKBAR]: (state, payload) => {
         state.message.show = true;
-        state.message.text = payload.message;
+        state.message.text = payload.text;
 
         if (payload.label)
             state.message.label = payload.label;
@@ -40,8 +40,11 @@ const mutations = {
         if (payload.callback_label)
             state.message.callback_label = payload.callback_label;
 
-        if (payload.hasOwnProperty('close'))
-            state.message.close = payload.close;
+        if (payload.hasOwnProperty('close')) {
+            if (payload.close !== null) {
+                state.message.close = payload.close;
+            }
+        }
 
         console.log(payload)
 
@@ -64,10 +67,10 @@ const actions = {
 }
 
 const getters = {
-    message: state => {
+    [types.GET_MESSAGE]: state => {
         return state.message;
     },
-    showMessage: state => {
+    [types.GET_MESSAGE_VISIBILITY]: state => {
         return state.message.show;
     }
 }

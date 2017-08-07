@@ -28,35 +28,35 @@ export default {
         sideBar: true,
     }),
     computed: {
-        ...mapGetters([
-            'isLoading',
-            'isFullLoading',
-        ])
+        ...mapGetters({
+            'isLoading': storeTypes.IS_LOADING,
+            'isFullLoading': storeTypes.IS_FULL_LOADING,
+        })
     },
     methods: {
-        gotoHome(){
-            this.$router.push({name: 'index'});
+        gotoHome() {
+            this.$router.push({ name: 'index' });
         },
         sideBarToggle() {
             this.$emit('toggleSidebar');
         },
         logout() {
             this.dispatchLogout();
-            this.$router.push({ name: 'index'});
+            this.$router.push({ name: 'index' });
         },
-        toggleSiteLoad(){
+        toggleSiteLoad() {
             this.isLoading ? this.stopSiteLoading() : this.startSiteLoading();
         },
-        toggleFullLoad(){
+        toggleFullLoad() {
             this.isFullLoading ? this.stopSiteLoading() : this.startSiteLoading('full');
         },
         ...mapActions(storeTypes.auth.NAME, {
             dispatchLogout: 'logout'
         }),
-        ...mapMutations([
-            'startSiteLoading',
-            'stopSiteLoading',
-        ])
+        ...mapMutations({
+            'startSiteLoading': storeTypes.START_LOADING,
+            'stopSiteLoading': storeTypes.STOP_LOADING,
+        })
     }
 }
 </script>

@@ -9,12 +9,13 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-import storeTypes from '@/store/types';
+import storeTypes from './../../store/types';
 
 export default {
     computed: {
         snackbar: {
             get: function () {
+                console.log(this.message);
                 return this.showMessage
             },
             set: function (newValue) {
@@ -22,14 +23,14 @@ export default {
             }
         },
         ...mapGetters(storeTypes.snackbar.NAME, {
-            showMessage: 'showMessage',
-            message: 'message'
+            showMessage: storeTypes.snackbar.GET_MESSAGE_VISIBILITY,
+            message: storeTypes.snackbar.GET_MESSAGE,
         })
 
     },
     methods: {
         ...mapMutations(storeTypes.snackbar.NAME, {
-            clearMessage: 'clearMessage'
+            clearMessage: storeTypes.snackbar.CLEAR_SNACKBAR
         }),
         callbackAndClose() {
             this.message.callback();

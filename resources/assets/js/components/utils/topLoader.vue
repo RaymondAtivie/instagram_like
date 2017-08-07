@@ -6,6 +6,8 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import storeTypes from './../../store/types';
+
 export default {
      data: () => ({
         // loader: true
@@ -15,9 +17,9 @@ export default {
         unknownProgress(){
             return !Number.isInteger(this.progress) ? true : false;
         },
-        ...mapGetters([
-            'isLoading'
-        ])
+        ...mapGetters({
+            'isLoading': storeTypes.IS_LOADING
+        })
     }
 }
 </script>
