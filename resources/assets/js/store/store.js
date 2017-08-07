@@ -1,20 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import auth from '@/store/modules/authStore';
-import messages from '@/store/modules/siteMessagesStore';
+import auth from '@/store/modules/auth/authStore';
+import snackbar from '@/store/modules/snackbar/snackbarStore';
 
 Vue.use(Vuex);
 console.warn("Use constants for store actions");
 
 export default new Vuex.Store({
     modules: {
-        auth: {
+        [auth.NAME]: {
             namespaced: true,
             ...auth
         },
-        messages: {
+        [snackbar.NAME]: {
             namespaced: true,
-            ...messages
+            ...snackbar
         }
     },
     state: {
@@ -23,9 +23,9 @@ export default new Vuex.Store({
     },
     mutations: {
         startSiteLoading: (state, payload) => {
-            if(payload == 'full'){
+            if (payload == 'full') {
                 state.isFullLoading = true;
-            }else{
+            } else {
                 state.isLoading = true;
             }
         },

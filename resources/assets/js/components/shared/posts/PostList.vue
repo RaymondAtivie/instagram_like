@@ -33,17 +33,17 @@ export default {
 
 <style lang="stylus">
 .list-enter-active {
-  transition: all .5s 1s;
+  transition: all .3s .6s;
 }
 .list-leave-active {
-  transition: all .5s;
+  transition: all .3s;
 }
 .list-enter, .list-leave-to {
 //   opacity: 0;
   transform: translateX(1300px);
 }
 .list-move {
-  transition: transform .5s .5s;
+  transition: transform .3s .3s;
 }
 .list-leave-active {
   position: absolute;

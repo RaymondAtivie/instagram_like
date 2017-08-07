@@ -30,7 +30,7 @@ export default {
 }
 
 .swipe-enter-active {
-    // animation: moveFromBottom .2s forwards; 
+    animation: moveFromBottom .2s forwards; 
     transition .3s all ease;
 }
 
@@ -38,8 +38,8 @@ export default {
 }
 
 .swipe-leave-active {
-    // animation: scaleDown .2s forwards;
-    opacity: 0;
+    animation: scaleDown .2s forwards;
+    // opacity: 0;
     transition .2s all ease;    
 }
 
@@ -52,6 +52,6 @@ export default {
 	to {  }
 }
 @keyframes moveFromBottom {
-	from { transform: translateY(100%); }
+	from { transform: translateY(50%); }
 }
 </style>

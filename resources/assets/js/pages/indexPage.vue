@@ -41,7 +41,7 @@ export default {
     .index-page{
         position: absolute;
         height: 100%;
-        background-color: $cyan.lighten-4;
+        background-color: $grey.lighten-2;
         .r-title-box > h1{
             font-weight: lighter;
         }

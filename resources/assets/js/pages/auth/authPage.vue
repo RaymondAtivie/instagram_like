@@ -9,7 +9,7 @@
                 </v-layout>
     
                 <v-layout class="auth-screens" justify-center>
-                    <v-flex xs12 sm8 md4 class="auth-screens">
+                    <v-flex xs12 sm8 md4>
                         <transition name="r-fade" mode="out-in">
                             <keep-alive>
                                 <router-view></router-view>
@@ -61,7 +61,7 @@ export default {
     // position: absolute;
     height: 100%;
     min-height 100vh;
-    background-color: $cyan.lighten-5    
+    background-color: $grey.lighten-2;  
     .r-image-box{
         img{ 
             width: 150px;
@@ -69,10 +69,8 @@ export default {
     }
     .auth-screens{
         padding-top: 40px;
-    }
-}
-.auth-screens{
     min-height 480px;
+    }
 }
 
 .r-fade-enter {

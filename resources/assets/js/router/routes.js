@@ -27,14 +27,14 @@ export default [{
         children: dashboadRoutes,
         beforeEnter: (to, from, next) => {
 
-            // setTimeout(()=>{
+            // setTimeout(() => {
             //     if (!store.getters['auth/isLoggedIn']) {
-            //         store.commit('giveMessage', {message: "You need to be logged in to view this route"});
+            //         store.commit('giveMessage', { message: "You need to be logged in to view this route" });
 
             //         next({ name: 'auth.login' });
             //     } else {
             //         next();
-            //     }               
+            //     }
             // }, 1000);
             next();
 

@@ -9,12 +9,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
 
         <title>Community Watch</title>
-        <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor-icons.css') }}" />
-         <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor.css') }}" /> 
-        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}" />
     </head>
     <body>
         <div id="app">Loading....</div>
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor-icons.css') }}" />
+         <link rel="stylesheet" type="text/css" href="{{ mix('css/vendor.css') }}" /> 
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}" />
         <script src="{{ mix('js/manifest.js') }}"></script>
         <script src="{{ mix('js/vendor.js') }}"></script>
         <script src="{{ mix('js/bundle.js') }}"></script>

@@ -1,36 +1,39 @@
+import * as types from './authTypes';
+const NAME = types.NAME;
+
 const state = {
     user: {},
     isLoggedIn: true,
 }
 
 const mutations = {
-    logIn: (state, user) => {
+    [types.USER_LOGIN]: (state, user) => {
         if (user) {
             state.user = user
         }
         state.isLoggedIn = true;
     },
-    logOut: (state) => {
+    [types.USER_LOGOUT]: (state) => {
         state.user = {};
         state.isLoggedIn = false;
     }
 }
 
 const actions = {
-    login: ({ commit }, user) => {
+    [types.USER_LOGIN]: ({ commit }, user) => {
         user ? user : {};
         commit('logIn', user);
     },
-    logout: ({ commit }) => {
+    [types.USER_LOGOUT]: ({ commit }) => {
         commit('logOut');
     }
 }
 
 const getters = {
-    user: state => {
+    [types.GET_USER]: state => {
         return state.user;
     },
-    isLoggedIn: state => {
+    [types.IS_LOGGED_IN]: state => {
         return state.isLoggedIn;
     }
 }
@@ -40,4 +43,5 @@ export default {
     mutations,
     actions,
     getters,
+    NAME
 }

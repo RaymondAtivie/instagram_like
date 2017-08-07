@@ -21,6 +21,7 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
+import storeTypes from './../store/types';
 
 export default {
     data: () => ({
@@ -47,16 +48,14 @@ export default {
             this.isLoading ? this.stopSiteLoading() : this.startSiteLoading();
         },
         toggleFullLoad(){
-            this.isFullLoading ? this.stopFullLoading() : this.startFullLoading();
+            this.isFullLoading ? this.stopSiteLoading() : this.startSiteLoading('full');
         },
-        ...mapActions('auth', {
+        ...mapActions(storeTypes.auth.NAME, {
             dispatchLogout: 'logout'
         }),
         ...mapMutations([
             'startSiteLoading',
             'stopSiteLoading',
-            'startFullLoading',
-            'stopFullLoading',
         ])
     }
 }
