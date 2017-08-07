@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isLoading" id="top-loader">
+    <div id="top-loader">
         <v-progress-linear :active="isLoading" height="4" v-model="progress" :indeterminate="unknownProgress" class="ma-0" secondary></v-progress-linear>
     </div>
 </template>

@@ -19,6 +19,10 @@ Route::get('/api', function () {
     // return [3,4,5];
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/{catchall?}', function () {
     return view('welcome');
 })->where('catchall', '(.*)');

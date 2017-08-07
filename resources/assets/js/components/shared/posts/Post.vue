@@ -1,7 +1,7 @@
 <template>
     <v-card class="post-card mb-5">
     
-        <v-system-bar status class="info" dark v-if="post.isReport">
+        <v-system-bar status class="info" dark v-if="post.report">
             <v-icon>report</v-icon>
             This has been reported to the police
             <v-spacer></v-spacer>
@@ -37,7 +37,7 @@
             </v-menu>
         </v-card-actions>
     
-        <v-card-media v-if="post.media" :src="post.media.link" height="300px"></v-card-media>
+        <v-card-media v-if="post.media" :src="post.media" height="300px"></v-card-media>
         <v-divider v-else inset></v-divider>
     
         <v-card-title primary-title>
@@ -59,8 +59,8 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn dark icon @click.native="isCommentOpen = !isCommentOpen" class="mx-3">
-                {{ post.comments.length > 1 ? post.comments.length : '' }}
-                <v-icon>chat</v-icon>
+                <!-- {{ post.comments.length > 1 ? post.comments.length : '' }} -->
+                <v-icon>comment</v-icon>
             </v-btn>
         </v-card-actions>
     

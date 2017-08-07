@@ -22,6 +22,8 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import storeTypes from './../store/types';
+import loader from './../helpers/loader';
+import snackbar from './../helpers/snackbar';
 
 export default {
     data: () => ({
@@ -42,20 +44,17 @@ export default {
         },
         logout() {
             this.dispatchLogout();
+            snackbar.fire("You have successfully logged out", null, 'success', null, false);
             this.$router.push({ name: 'index' });
         },
         toggleSiteLoad() {
-            this.isLoading ? this.stopSiteLoading() : this.startSiteLoading();
+            this.isLoading ? loader.stop() : loader.start();
         },
         toggleFullLoad() {
-            this.isFullLoading ? this.stopSiteLoading() : this.startSiteLoading('full');
+            this.isFullLoading ? loader.stop() : loader.start('full');
         },
         ...mapActions(storeTypes.auth.NAME, {
-            dispatchLogout: 'logout'
-        }),
-        ...mapMutations({
-            'startSiteLoading': storeTypes.START_LOADING,
-            'stopSiteLoading': storeTypes.STOP_LOADING,
+            dispatchLogout: storeTypes.auth.USER_LOGOUT
         })
     }
 }

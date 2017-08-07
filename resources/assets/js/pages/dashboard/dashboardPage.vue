@@ -45,7 +45,6 @@ export default {
         rFooter,
     },
     beforeRouteEnter(to, from, next) {
-        console.log(store);
         next();
     }
 }

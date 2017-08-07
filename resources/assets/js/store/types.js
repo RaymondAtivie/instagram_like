@@ -1,5 +1,6 @@
 import * as auth from './modules/auth/authTypes';
 import * as snackbar from './modules/snackbar/snackbarTypes';
+import * as post from './modules/post/postTypes';
 
 const t = {
     START_LOADING: "START_LOADING",
@@ -13,5 +14,6 @@ const t = {
 export default {
     auth,
     snackbar,
+    post,
     ...t
 }

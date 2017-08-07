@@ -4,7 +4,8 @@ import Auth from '@/pages/auth/authPage.vue';
 import Dashboard from '@/pages/dashboard/dashboardPage.vue';
 
 import store from '@/store/store';
-import { Snackbar } from './../helpers/snackbar';
+import sb from './../helpers/snackbar';
+import loader from './../helpers/loader';
 
 import dashboadRoutes from './dashboardRoutes';
 import authRoutes from './authRoutes';
@@ -27,18 +28,21 @@ export default [{
         component: Dashboard,
         children: dashboadRoutes,
         beforeEnter: (to, from, next) => {
+            loader.start('full');
 
-            // setTimeout(() => {
-            //     if (!store.getters['auth/isLoggedIn']) {
-            //         let sb = new Snackbar('Hello world', 1000);
-            //         sb.fire();
+            setTimeout(() => {
+                if (!store.getters['auth/isLoggedIn']) {
+                    // sb.fire('Hello world this is me', 2000);
 
-            //         next({ name: 'auth.login' });
-            //     } else {
-            //         next();
-            //     }
-            // }, 0);
-            next();
+                    next();
+                    // next({ name: 'auth.login' });
+                } else {
+                    next();
+                }
+                loader.stop();
+
+            }, 1000);
+            // next();
 
         }
     },

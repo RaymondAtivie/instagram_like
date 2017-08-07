@@ -1,9 +1,9 @@
 import store from './../store/store';
 import storeTypes from './../store/types';
 
-export class Snackbar {
-    constructor(message, time = null, label = null, position = 'top', close = null, callback = null, callback_label = null) {
-        this.config = this._setup(message, time, label, position, close, callback, callback_label);
+class Snackbar {
+    constructor() {
+        this.config = null;
     }
 
     _setup(message, time, label, position, close, callback, callback_label) {
@@ -13,7 +13,7 @@ export class Snackbar {
         };
         config.time = time || null;
         config.label = label || null;
-        config.close = close || null;
+        config.close = close;
         config.callback = callback || null;
         config.callback_label = callback_label || null;
 
@@ -32,10 +32,19 @@ export class Snackbar {
         return config;
     }
 
-    fire() {
+    fire(message, time = null, label = null, position = 'top', close = null, callback = null, callback_label = null) {
+        position = position || 'top';
+
+        this.config = this._setup(message, time, label, position, close, callback, callback_label);
+        this.show();
+    }
+
+    show() {
         store.commit(
             storeTypes.snackbar.NAME + '/' + storeTypes.snackbar.LOAD_SNACKBAR,
             this.config
         );
     }
 }
+
+export default new Snackbar();

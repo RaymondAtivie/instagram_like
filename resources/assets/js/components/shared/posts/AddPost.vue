@@ -18,7 +18,7 @@
             <v-card-media v-if="post.media" :src="post.media.link" height="300px"></v-card-media>
 
             <v-card-actions class="secondary">
-                <v-switch v-bind:label="'Report'" v-model="post.isReport" class="ma-0 pa-0 ml-3" hide-details color="primary"></v-switch>
+                <v-switch v-bind:label="'Report'" v-model="post.report" class="ma-0 pa-0 ml-3" hide-details color="primary"></v-switch>
                 <v-spacer></v-spacer>
                 <v-btn flat icon class="mx-2" v-tooltip:left="{html: 'Add a photo'}" @click="addPhoto" v-if="!post.media">
                     <v-icon>add_a_photo</v-icon>
@@ -56,7 +56,7 @@ export default {
             post: {
                 text: '',
                 media: false,
-                isReport: false
+                report: false
             },
             posting: false
         }
@@ -67,7 +67,7 @@ export default {
                 this.post = {
                     text: '',
                     media: false,
-                    isReport: false
+                    report: false
                 },
                     this.posting = false;
             }
@@ -101,7 +101,7 @@ export default {
             this.post = {
                 text: '',
                 media: false,
-                isReport: false
+                report: false
             },
             this.posting = false;
             this.$emit('canceled');

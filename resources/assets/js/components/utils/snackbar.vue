@@ -15,7 +15,6 @@ export default {
     computed: {
         snackbar: {
             get: function () {
-                console.log(this.message);
                 return this.showMessage
             },
             set: function (newValue) {

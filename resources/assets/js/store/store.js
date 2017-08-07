@@ -3,12 +3,14 @@ import Vuex from 'vuex';
 
 import auth from '@/store/modules/auth/authStore';
 import snackbar from '@/store/modules/snackbar/snackbarStore';
+import post from '@/store/modules/post/postStore';
 
 import types from './types';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    // strict: true,
     modules: {
         [auth.NAME]: {
             namespaced: true,
@@ -17,6 +19,10 @@ export default new Vuex.Store({
         [snackbar.NAME]: {
             namespaced: true,
             ...snackbar
+        },
+        [post.NAME]: {
+            namespaced: true,
+            ...post
         }
     },
     state: {

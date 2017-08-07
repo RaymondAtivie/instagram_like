@@ -28,139 +28,42 @@
 <script>
 import Posts from '@/components/shared/posts/PostList'
 import AddPost from '@/components/shared/posts/AddPost'
+import { mapGetters } from 'vuex';
+import pApi from './../../../api/posts';
+import types from './../../../store/types';
+
 export default {
-    data() {
-        return {
-            show: false,
-            posts: [{
-                id: 1,
-                user: {
-                    name: 'Raymond Ativie',
-                    title: 'Developer and Vuejs evangelist @ Reftek.co',
-                    image: '/images/avatar.jpg'
-                },
-                time: 12434355,
-                isLiked: false,
-                text: "loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum nisi soluta eos. Dolorum quo molestias voluptatem sapiente voluptatum. Quisquam expedita est doloremque ea neque. Voluptatem vero accusamus accusamus.",
-                isCommentOpen: false,
-                likes: 0,
-                reposts: 3,
-                comments: [{
-                    user: {
-                        name: 'Kelly Ezeh',
-                        title: 'Developer and Vuejs evangelist @ Reftek.co',
-                        image: '/images/avatar1.jpg'
-                    },
-                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
-                    date: '12 March 2017'
-                },
-                {
-                    user: {
-                        name: 'Raymond Ativie',
-                        title: 'Developer and Vuejs evangelist @ Reftek.co',
-                        image: '/images/avatar.jpg'
-                    },
-                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
-                    date: '12 March 2017'
-                }],
-                // media: {
-                //     type: 'image',
-                //     link: '/images/image1.jpg',
-                // }
-                media: null
-            },
-            {
-                id: 2,                
-                user: {
-                    name: 'Kelly Ezeh',
-                    title: 'Masters computer science',
-                    image: '/images/avatar1.jpg'
-                },
-                time: 12434355,
-                isLiked: false,
-                text: "loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum nisi soluta eos. Dolorum quo molestias voluptatem sapiente voluptatum. Quisquam expedita est doloremque ea neque. Voluptatem vero accusamus accusamus.",
-                isCommentOpen: false,
-                likes: 0,
-                reposts: 3,
-                comments: [{
-                    user: {
-                        name: 'Raymond Ativie',
-                        title: 'Developer and Vuejs evangelist @ Reftek.co',
-                        image: '/images/avatar.jpg'
-                    },
-                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earumoremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
-                    date: '12 March 2017'
-                },
-                {
-                    user: {
-                        name: 'Kelly Ezeh',
-                        title: 'Developer and Vuejs evangelist @ Reftek.co',
-                        image: '/images/avatar1.jpg'
-                    },
-                    comment: 'loremSint sit amet quos aut. Rem dolor natus. Temporibus voluptas vel earum',
-                    date: '12 March 2017'
-                }],
-                media: {
-                    type: 'image',
-                    link: '/images/image1.jpg',
-                }
-            }],
-            newPostModal: false,
-            counter: 3
-        }
-    },
     components: {
         rPosts: Posts,
         rAddPost: AddPost,
     },
-    computed: {
-        activeFab() {
-            switch (this.tabs) {
-                case 'one': return { 'class': 'purple', icon: 'account_circle' }
-                case 'two': return { 'class': 'red', icon: 'edit' }
-                case 'three': return { 'class': 'green', icon: 'keyboard_arrow_up' }
-                default: return {}
-            }
-        },
-        clearNewPost(){
-            return this.newPostModal;
+    data() {
+        return {
+            show: false,
+            // posts: [],
+            newPostModal: false,
+            counter: 3
         }
+    },
+    computed: {
+        clearNewPost() {
+            return this.newPostModal;
+        },
+        ...mapGetters(types.post.NAME, {
+            posts: types.post.GET_POSTS
+        })
     },
     methods: {
         openNewPost() {
             this.newPostModal = true;
         },
-        addPost(p){
-            let newPost = {
-                id: this.counter++,
-                user: {
-                    name: 'Raymond Ativie',
-                    title: 'Developer and Vuejs evangelist @ Reftek.co',
-                    image: '/images/avatar1.jpg'
-                },
-                time: 12434355,
-                isLiked: false,
-                text: p.text,
-                isCommentOpen: false,
-                likes: 0,
-                reposts: 0,
-                comments: [],
-                isReport: p.isReport,
-                media: p.media
-            }
-            setTimeout(() => {
-                this.posts.unshift(newPost);
-                this.newPostModal = false;
-                this.closeAddPost = true;                
-            }, 500);
-            console.log(p.media);
-        },
-        remove: function () {
-            this.posts.splice(this.randomIndex(), 1)
-        },
-        randomIndex: function () {
-            return Math.floor(Math.random() * this.items.length)
-        },
+        addPost(newPost) {
+            pApi.addPost(newPost)
+                .then(res => {
+                    this.newPostModal = false;
+                    this.closeAddPost = true;
+                })
+        }
     }
 }
 </script>

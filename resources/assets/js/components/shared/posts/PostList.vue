@@ -19,7 +19,6 @@ export default {
     },
     methods: {
         removePost(p){
-            console.log(p);
             this.posts.forEach((post, index) => {
                 if(post.id == p){
                     this.posts.splice(index, 1);

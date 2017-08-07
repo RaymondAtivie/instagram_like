@@ -1,19 +1,17 @@
 import store from './../store/store';
 import storeTypes from './../store/types';
 
-export class Snackbar {
-    constructor(full = null) {
-
-    }
-
-    _setup(message, time, label, position, close, callback, callback_label) {
-
-    }
-
-    fire() {
+class Loader {
+    start(full = false) {
         store.commit(
-            storeTypes.NAME + '/' + storeTypes.snackbar.LOAD_SNACKBAR,
-            this.config
+            storeTypes.START_LOADING,
+            full
         );
     }
+
+    stop() {
+        store.commit(storeTypes.STOP_LOADING);
+    }
 }
+
+export default new Loader();

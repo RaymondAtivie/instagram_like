@@ -22,10 +22,10 @@ const mutations = {
 const actions = {
     [types.USER_LOGIN]: ({ commit }, user) => {
         user ? user : {};
-        commit('logIn', user);
+        commit(types.USER_LOGIN, user);
     },
     [types.USER_LOGOUT]: ({ commit }) => {
-        commit('logOut');
+        commit(types.USER_LOGIN);
     }
 }
 

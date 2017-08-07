@@ -25,11 +25,11 @@ const mutations = {
         if (payload.label)
             state.message.label = payload.label;
 
-        if (payload.y)
-            state.message.position.y = payload.y;
+        if (payload.position.y)
+            state.message.position.y = payload.position.y;
 
-        if (payload.x)
-            state.message.position.x = payload.x;
+        if (payload.position.x)
+            state.message.position.x = payload.position.x;
 
         if (payload.time)
             state.message.time = payload.time;
@@ -45,20 +45,19 @@ const mutations = {
                 state.message.close = payload.close;
             }
         }
-
-        console.log(payload)
-
     },
     [types.CLEAR_SNACKBAR]: (state) => {
         state.message.show = false;
         state.message.text = '';
         state.message.label = false;
-        state.message.position.y = 'top';
-        state.message.position.x = false;
         state.message.time = 6000;
         state.message.callback = false;
         state.message.callback_label = 'CLOSE';
         state.message.close = true;
+        setTimeout(() => {
+            state.message.position.y = 'top';
+            state.message.position.x = false;
+        }, 500);
     }
 }
 
