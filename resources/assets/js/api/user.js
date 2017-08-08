@@ -38,8 +38,8 @@ class User {
                         s.fire("something went wrong", 'error');
                     }
 
-                    reject(res);
                     l.stop();
+                    reject(error);
                 })
         })
     }
