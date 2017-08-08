@@ -64,6 +64,13 @@ export default {
                     this.closeAddPost = true;
                 })
         }
+    },
+    mounted() {
+        pApi.getAll()
+            .catch(error => {
+                console.log("erroring");
+                console.log(error);
+            })
     }
 }
 </script>

@@ -51,6 +51,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
     .fixed-top{
         position: fixed;
     }

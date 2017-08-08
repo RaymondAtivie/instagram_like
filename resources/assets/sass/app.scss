@@ -37,7 +37,7 @@ body {
 .removeListHover {
     a.list__tile:hover,
     .list__tile--highlighted {
-        background: none !important;
+        // background: none !important;
         cursor: pointer;
     }
 }

@@ -47,6 +47,7 @@ export default {
 
             user.attempt(this.user.email, this.user.password)
             .then(res => {
+                s.fire(res.message);
                 this.$router.push({name: 'dash.home'});
             })
         }

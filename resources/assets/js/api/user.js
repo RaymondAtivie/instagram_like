@@ -24,11 +24,11 @@ class User {
             api.post('login', data)
                 .then(res => {
                     if (res.status) {
-                        s.fire(res.message);
+                        this.user = res.data;
                         store.commit(types.auth.NAME + '/' + types.auth.USER_LOGIN, res.data);
                         l.stop();
-                        this.user = res.data;
-                        resolve(res.data);
+
+                        resolve(res);
                     }
                 })
                 .catch((error) => {
@@ -41,6 +41,44 @@ class User {
                     l.stop();
                     reject(error);
                 })
+        })
+    }
+
+    signUp(user) {
+        let data = {
+            name: user.name,
+            image: user.image,
+            title: user.title,
+            email: user.email,
+            password: user.password,
+        }
+
+        console.log(data);
+        // return;
+
+        return new Promise((resolve, reject) => {
+
+            api.post('register', data)
+                .then(res => {
+                    if (res.status) {
+                        this.user = res.data;
+                        // store.commit(types.auth.NAME + '/' + types.auth.USER_LOGIN, res.data);
+                        l.stop();
+
+                        resolve(res);
+                    }
+                })
+                .catch((error) => {
+                    if (error) {
+                        s.fire(error.data.message, 'warning');
+                    } else {
+                        s.fire("something went wrong", 'error');
+                    }
+
+                    l.stop();
+                    reject(error);
+                })
+
         })
     }
 

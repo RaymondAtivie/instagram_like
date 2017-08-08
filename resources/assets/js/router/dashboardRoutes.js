@@ -12,20 +12,7 @@ export default [{
     {
         path: 'posts',
         name: 'dash.posts',
-        component: Posts,
-        beforeEnter: (to, from, next) => {
-            p.getAll()
-                .then(posts => {
-                    console.log(posts);
-                    console.log("get posts before dash");
-                    next();
-                })
-                .catch(error => {
-                    console.log("erroring");
-                    console.log(error);
-                    next();
-                })
-        }
+        component: Posts
     },
     {
         path: 'messages',

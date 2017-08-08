@@ -40,6 +40,45 @@ class UsersController extends Controller
 
         return response()->json($data, 200);
     }
+    
+    public function register(Request $request)
+    {
+        $credentials = $request->only('name', 'title', 'image', 'email', 'password');
+
+        $newUser = new User;
+        $newUser->name = $credentials['name'];
+        $newUser->title = $credentials['title'];
+        $newUser->image = $credentials['image'];
+        $newUser->email = $credentials['email'];
+        $newUser->password = bcrypt($credentials['password']);
+
+        $newUser->save();
+
+         try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                $data = [
+                    "status" => false,
+                    "message" => "username or password incorrect",
+                ];
+                return response()->json($data, 401);
+            }
+        } catch (JWTException $e) {
+            $data = [
+                "status" => false,
+                "message" => "could not create token",
+            ];
+            return response()->json($data, 500);
+        }
+
+        $data = [
+            "status" => true,
+            "message" => "successfully registered",
+            'token' => $token,
+            "data" => Auth::user()
+        ];
+
+        return response()->json($data, 201);
+    }
 
     /**
      * Display a listing of the resource.

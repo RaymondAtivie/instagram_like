@@ -44,7 +44,7 @@ export default {
         },
         logout() {
             this.dispatchLogout();
-            snackbar.fire("You have successfully logged out");
+            snackbar.fire("You have logged out");
             this.$router.push({ name: 'index' });
         },
         toggleSiteLoad() {
@@ -53,9 +53,9 @@ export default {
         toggleFullLoad() {
             this.isFullLoading ? loader.stop() : loader.start('full');
         },
-        ...mapActions(storeTypes.auth.NAME, {
-            dispatchLogout: storeTypes.auth.USER_LOGOUT
-        })
+        dispatchLogout(){
+            this.$store.dispatch(storeTypes.auth.NAME+'/'+storeTypes.auth.USER_LOGOUT);
+        }
     }
 }
 </script>

@@ -4,6 +4,7 @@ import Auth from '@/pages/auth/authPage.vue';
 import Dashboard from '@/pages/dashboard/dashboardPage.vue';
 
 import store from '@/store/store';
+import storeTypes from '@/store/types';
 import sb from './../helpers/snackbar';
 import loader from './../helpers/loader';
 
@@ -30,20 +31,13 @@ export default [{
         beforeEnter: (to, from, next) => {
             loader.start('full');
 
-            setTimeout(() => {
-                if (!store.getters['auth/isLoggedIn']) {
-                    // sb.fire('Hello world this is me', 2000);
-
-                    next();
-                    // next({ name: 'auth.login' });
-                } else {
-                    next();
-                }
-                loader.stop();
-
-            }, 1000);
-            // next();
-
+            if (!store.getters[storeTypes.auth.NAME + '/' + storeTypes.auth.IS_LOGGED_IN]) {
+                sb.fire('You must be logged in to view that page');
+                next({ name: 'auth.login' });
+            } else {
+                next();
+            }
+            loader.stop();
         }
     },
 ]
