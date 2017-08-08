@@ -32,7 +32,7 @@ class Snackbar {
         return config;
     }
 
-    fire(message, time = null, label = null, position = 'top', close = null, callback = null, callback_label = null) {
+    fire(message, label = null, time = null, position = 'top', close = null, callback = null, callback_label = null) {
         position = position || 'top';
 
         this.config = this._setup(message, time, label, position, close, callback, callback_label);
@@ -40,10 +40,14 @@ class Snackbar {
     }
 
     show() {
-        store.commit(
-            storeTypes.snackbar.NAME + '/' + storeTypes.snackbar.LOAD_SNACKBAR,
-            this.config
-        );
+        store.commit(storeTypes.snackbar.NAME + '/' + storeTypes.snackbar.CLEAR_SNACKBAR);
+        setTimeout(() => {
+
+            store.commit(
+                storeTypes.snackbar.NAME + '/' + storeTypes.snackbar.LOAD_SNACKBAR,
+                this.config
+            );
+        }, 500)
     }
 }
 

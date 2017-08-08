@@ -4,7 +4,9 @@
             <v-container fluid class="auth-page">
                 <v-layout class="contain mt-3" justify-center>
                     <div class="r-image-box">
-                        <img class="clickable" src="/images/logo.svg" />
+                        <router-link :to="{name: 'index'}">
+                        <img class="clickable" src="/images/logo.jpeg" />
+                        </router-link>
                     </div>
                 </v-layout>
     
@@ -51,7 +53,6 @@
 
 <script>
 export default {
-
 }
 </script>
 
@@ -61,7 +62,7 @@ export default {
     // position: absolute;
     height: 100%;
     min-height 100vh;
-    background-color: $grey.lighten-2;  
+    // background-color: $grey.lighten-2;  
     .r-image-box{
         img{ 
             width: 150px;

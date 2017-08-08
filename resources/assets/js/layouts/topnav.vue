@@ -44,7 +44,7 @@ export default {
         },
         logout() {
             this.dispatchLogout();
-            snackbar.fire("You have successfully logged out", null, 'success', null, false);
+            snackbar.fire("You have successfully logged out");
             this.$router.push({ name: 'index' });
         },
         toggleSiteLoad() {

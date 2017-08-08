@@ -3,7 +3,7 @@ const NAME = types.NAME;
 
 const state = {
     user: {},
-    isLoggedIn: true,
+    isLoggedIn: false,
 }
 
 const mutations = {
@@ -25,7 +25,7 @@ const actions = {
         commit(types.USER_LOGIN, user);
     },
     [types.USER_LOGOUT]: ({ commit }) => {
-        commit(types.USER_LOGIN);
+        commit(types.USER_LOGOUT);
     }
 }
 

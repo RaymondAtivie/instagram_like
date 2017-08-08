@@ -4,7 +4,7 @@
             <v-container fluid class="index-page">
                 <v-layout column class="contain" align-center fill-height justify-center>
                     <div class="r-image-box">
-                        <img src="/images/logo.svg" />
+                        <img src="/images/logo.jpeg" />
                     </div>
                     <div class="r-title-box">
                         <h1 class="primary--text">Community Watch</h1>
@@ -41,7 +41,7 @@ export default {
     .index-page{
         position: absolute;
         height: 100%;
-        background-color: $grey.lighten-2;
+        // background-color: $grey.lighten-2;
         .r-title-box > h1{
             font-weight: lighter;
         }

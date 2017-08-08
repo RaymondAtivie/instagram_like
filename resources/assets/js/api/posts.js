@@ -14,16 +14,18 @@ class Post {
 
     getAll() {
         return new Promise((resolve, reject) => {
-
-            api.get('posts')
+            l.start();
+            api.get(this.model)
                 .then(data => {
                     console.log(data);
                     this.posts = data;
                     store.commit(types.post.NAME + '/' + types.post.REPLACE_POSTS, data);
                     resolve(data);
+                    l.stop();
                 })
                 .catch(error => {
-                    s.fire("Something went wrong", null, 'error');
+                    s.fire("Something went wrong", 'error');
+                    l.stop();
                     reject(error);
                 })
 
@@ -39,22 +41,20 @@ class Post {
         if (post.media) {
             sendP.media = post.media.link
         }
+
         return new Promise((resolve, reject) => {
-
-            setTimeout(() => {
-
-                api.post('posts', sendP)
-                    .then(newPost => {
-                        store.commit(types.post.NAME + '/' + types.post.ADD_NEW_POST, newPost);
-                        resolve(newPost);
-                    })
-                    .catch(error => {
-                        s.fire("Something went wrong", null, 'error');
-                        reject(error);
-                    })
-            }, 5000)
-
-
+            l.start();
+            api.post(this.model, sendP)
+                .then(newPost => {
+                    store.commit(types.post.NAME + '/' + types.post.ADD_NEW_POST, newPost);
+                    l.stop();
+                    resolve(newPost);
+                })
+                .catch(error => {
+                    s.fire("Something went wrong", 'error');
+                    l.stop();
+                    reject(error);
+                })
         })
     }
 
